@@ -25,9 +25,9 @@ const Service = () => {
         or randomised words which don't look even slightly believable.{" "}
       </p>
 
-      <div className="grid grid-cols-1  lg:mt-16 lg:mb-12 md:grid-cols-2 lg:grid-cols-3 gap-y-4">
+      <div className="grid grid-cols-1 gap-5 lg:mt-16 lg:mb-12 md:grid-cols-2 lg:grid-cols-3 gap-y-4">
         {services.map((service) => (
-          <ServiceCard key={services._id} service={service}></ServiceCard>
+          <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </div>
     </div>

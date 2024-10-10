@@ -1,22 +1,34 @@
 import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { CiFacebook } from "react-icons/ci";
 import { FaLinkedin } from "react-icons/fa6";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { sinInUser } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { email, password };
     sinInUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const loggedInUser = result.user;
+        const user = { email };
+        console.log(loggedInUser);
+
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          });
       })
       .catch((error) => {
         console.log(error);

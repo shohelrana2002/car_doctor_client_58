@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import NavBar from "../Shared/NavBar/NavBar";
 import checkoutPng from "../../assets/images/checkout/checkout.png";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Checkout = () => {
   const services = useLoaderData();
   const { _id, title, img, email } = services;
+  const { user } = useContext(AuthContext);
   const handleBookService = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -95,7 +97,7 @@ const Checkout = () => {
             </label>
             <input
               name="email"
-              defaultValue={services?.email}
+              defaultValue={user?.email}
               type="email"
               placeholder="Email"
               className="input input-bordered"
@@ -118,15 +120,15 @@ const Checkout = () => {
         </div>
 
         <div className="lg:w-[946px] my-5 lg:h-full mx-auto w-full">
-          <div className="">
-            <label htmlFor="message"></label>
+          <div>
+            {/* <label htmlFor="message"></label>
             <textarea
               className="lg:w-[946px] w-full h-full lg:h-[321px]"
               name="message"
               id="message"
             >
               Message
-            </textarea>
+            </textarea> */}
           </div>
           <div className="my-4">
             <input
