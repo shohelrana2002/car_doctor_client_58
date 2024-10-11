@@ -1,28 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import BookingRow from "./BookingRow";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import axios from "axios";
 const Bookings = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [bookings, setBookings] = useState([]);
 
   const url = `http://localhost:5000/bookings?email=${user.email}`;
   useEffect(() => {
-    axios.get(ur).then((res) => {
-      // { withCredentials: true }
+    axios.get(url, { withCredentials: true }).then((res) => {
       setBookings(res.data);
     });
-    // fetch(url)
+    // fetch(url, { credentials: "include" })
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setBookings(data);
     //   });
-  }, []);
+  }, [url]);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
