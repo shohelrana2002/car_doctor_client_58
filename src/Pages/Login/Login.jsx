@@ -22,7 +22,7 @@ const Login = () => {
         console.log(loggedInUser);
         navigate(location?.state ? location?.state : "/");
         // axios
-        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
+        //   .post("https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/jwt", user, { withCredentials: true })
         //   .then((res) => {
         //     console.log(res.data);
         //     if (res.data.success) {
@@ -31,7 +31,7 @@ const Login = () => {
         //   });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   return (

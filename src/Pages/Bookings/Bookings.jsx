@@ -10,7 +10,7 @@ const Bookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
 
-  const url = `http://localhost:5000/bookings?email=${user.email}`;
+  const url = `https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/bookings?email=${user.email}`;
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
       setBookings(res.data);
@@ -32,12 +32,15 @@ const Bookings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/bookings/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
@@ -50,7 +53,7 @@ const Bookings = () => {
           });
       }
     });
-    console.log("Delete ", id);
+    // console.log("Delete ", id);
   };
 
   return (

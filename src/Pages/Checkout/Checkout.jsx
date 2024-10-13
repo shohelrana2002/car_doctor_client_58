@@ -24,9 +24,9 @@ const Checkout = () => {
       Price: price,
       img,
     };
-    console.log(bookingInfo);
+    // console.log(bookingInfo);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +35,7 @@ const Checkout = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
   };
 

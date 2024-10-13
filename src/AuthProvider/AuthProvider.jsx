@@ -38,19 +38,27 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (createUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://crud-car-genius-server-58-lq3pqi7sf.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
-            console.log("LOG OUT", res.data);
+            // console.log("LOG OUT", res.data);/
           })
           .catch((err) => {
             console.error("Error during logout:", err);

@@ -15,11 +15,11 @@ const SingUp = () => {
     const password = form.password.value;
     const user = { email, password, name };
 
-    console.log("hir bro", user);
+    // console.log("hir bro", user);
     createUser(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => console.log(error));
   };
